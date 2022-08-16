@@ -1,6 +1,9 @@
+// main container 
 const pokemon_container = document.querySelector('.pokemon_container')
+// number of pokemon
 const pokemon_count = 150
 
+// colos <-> type of pokemon
 const colors = {
     fire: '#FDDFDF',
     grass: '#DEFDE0',
@@ -20,20 +23,23 @@ const colors = {
 
 const main_types = Object.keys(colors)
 
+// generate pokemons (pokemon_count)
 const fetchPokemons = () => {
     for(let i = 1; i <= pokemon_count; i++) {
         getPokemon(i)
     }
 }
 
+// api call (pokeapi) 
 const getPokemon = async (id) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`
     const res = await fetch(url)
     const data = await res.json()
     createPokemonCard(data)
-    console.log(data)
+    //console.log(data)
 }
 
+// create pokemon card
 const createPokemonCard = (pokemon) => { 
 
     const card = document.createElement('div')
@@ -54,6 +60,5 @@ const createPokemonCard = (pokemon) => {
                      </div>`
     pokemon_container.appendChild(card)
 }
-
 
 fetchPokemons()
