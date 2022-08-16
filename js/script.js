@@ -1,9 +1,9 @@
 // main container 
 const pokemon_container = document.querySelector('.pokemon_container')
-// number of pokemon
+// number of pokemons
 const pokemon_count = 150
 
-// colos <-> type of pokemon
+// colors <-> type of pokemon
 const colors = {
     fire: '#FDDFDF',
     grass: '#DEFDE0',
@@ -46,9 +46,13 @@ const createPokemonCard = (pokemon) => {
     card.classList.add('card')
 
     const poke_types = pokemon.types.map(type => type.type.name)
+    // pokemon name (first uppercase)
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
+    // find main type of pokemon
     const type = main_types.find(type => poke_types.indexOf(type) > -1)
+    // type color
     const color = colors[type]
+    // find pokemon id (pattern ###)
     const id = pokemon.id.toString().padStart(3, '0')
     
     card.style.backgroundColor = color
